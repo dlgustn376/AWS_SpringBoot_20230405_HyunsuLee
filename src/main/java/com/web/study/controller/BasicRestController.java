@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +28,7 @@ public class BasicRestController {
 		return ResponseEntity.ok().body(DataResponseDto.of(userInfo));
 	}
 	
+	@CrossOrigin
 	@GetMapping("/read2/{id}")
 	public ResponseEntity<? extends ResponseDto> read2(@PathVariable int id){  //post put delete 다 됨
 		
