@@ -8,6 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class LectureReqDto {
+	
 	private String lectureName;
 	private int lecturePrice;
 	private int lecturerId;
