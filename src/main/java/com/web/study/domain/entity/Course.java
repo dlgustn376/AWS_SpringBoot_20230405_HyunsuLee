@@ -12,4 +12,6 @@ public class Course {
 	private int lecture_id;
 	private int student_id;
 	private LocalDate registe_date;
+	private Lecture lecture;
+	private Student student;
 }
