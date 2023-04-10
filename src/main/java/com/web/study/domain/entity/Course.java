@@ -2,7 +2,7 @@ package com.web.study.domain.entity;
 
 import java.time.LocalDate;
 
-public class LectureRegiste {
+public class Course {
 	private int id;
 	private int lecture_id;
 	private int student_id;

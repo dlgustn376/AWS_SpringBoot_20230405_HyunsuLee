@@ -17,9 +17,9 @@ public class LectureServiceImpl implements LectureService{
 	@Override
 	public void registeLecture(LectureReqDto lectureReqDto) {
 		// DTO -> ENTITY 변환
-		Lecture lecture = lectureReqDto.toEntity();
-		System.out.println("변환: " + lecture);
-		lectureRepository.registe(lecture); // DB에 전달
+//		Lecture lecture = lectureReqDto.toEntity();
+//		System.out.println("변환: " + lecture);
+		lectureRepository.registe(lectureReqDto.toEntity()); // DB에 전달
 	}
 
 }
