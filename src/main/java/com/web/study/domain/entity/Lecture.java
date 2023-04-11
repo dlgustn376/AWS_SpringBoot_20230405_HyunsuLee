@@ -1,7 +1,5 @@
 package com.web.study.domain.entity;
 
-import java.time.LocalDate;
-
 import com.web.study.dto.response.LectureRespDto;
 
 import lombok.AllArgsConstructor;
@@ -23,11 +21,18 @@ public class Lecture {
 	private Instructor instructor;
 	
 	public LectureRespDto toDto() {
+		
+		String instructorName = null;
+		
+		if(instructor != null) {
+			instructorName = instructor.getItm_name();
+		}
+		
 		return LectureRespDto.builder()
-				.id(ltm_id)
-				.lecture_name(ltm_name)
-				.lecture_price(ltm_price)
-				.instructor_id(itm_id)
+				.lectureId(ltm_id)
+				.lectureName(ltm_name)
+				.lecturePrice(ltm_price)
+				.instructorName(instructorName)
 				.build();
 	}
 }

@@ -1,6 +1,7 @@
 package com.web.study.controller.lecture;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,9 +30,20 @@ public class LectureController {
 	}
 	
 	// Read Get
-	@GetMapping("/lecture/all")
+	public ResponseEntity<? extends ResponseDto> get(){
+		return ResponseEntity.ok().body(ResponseDto.ofDefault());
+	}
+	
+	@GetMapping("/lectures/all")
 	public ResponseEntity<? extends ResponseDto> getLectureAll(){
 		return ResponseEntity.ok().body(DataResponseDto.of(lectureService.getLectureAll()));
+	}
+	
+	@GetMapping("/search/lectures")
+	public ResponseEntity<? extends ResponseDto> searchLecture(int type, String searchValue){
+		System.out.println(type);
+		System.out.println(searchValue);
+		return ResponseEntity.ok().body(DataResponseDto.of(lectureService.searchLecture(type , searchValue)));
 	}
 	
 	// Update Put

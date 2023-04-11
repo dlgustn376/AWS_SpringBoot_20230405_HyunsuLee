@@ -1,13 +1,14 @@
 package com.web.study.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.web.study.domain.entity.Course;
 import com.web.study.dto.request.course.CourseReqDto;
+import com.web.study.dto.response.CourseRespDto;
 import com.web.study.repository.CourseRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -24,17 +25,26 @@ public class CourseServiceImpl implements CourseService{
 	}
 
 	@Override
-	public List<Course> getCourseAll() {
-		return courseRepository.getCourseAll();
+	public List<CourseRespDto> getCourseAll() {
+		List<CourseRespDto> dtos = new ArrayList<>();
+		
+		courseRepository.getCourseAll().forEach(entity->{
+			dtos.add(entity.toDto());
+		});
+		return dtos;
 	}
 
 	@Override
-	public List<Course> searchCourse(int type, String searchValue) {
+	public List<CourseRespDto> searchCourse(int type, String searchValue) {
 		Map<String, Object> parmeterMap = new HashMap<>();
 		parmeterMap.put("type", type);
 		parmeterMap.put("searchValue", searchValue);
 		
-		return courseRepository.searchCourse(parmeterMap);
+		List<CourseRespDto> dtos = new ArrayList<>();
+		courseRepository.searchCourse(parmeterMap).forEach(entity->{
+			dtos.add(entity.toDto());
+		});
+		return dtos;
 	}
 
 }
