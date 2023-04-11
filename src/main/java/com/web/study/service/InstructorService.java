@@ -1,0 +1,12 @@
+package com.web.study.service;
+
+import java.util.List;
+
+import com.web.study.dto.request.instructor.InstructorReqDto;
+import com.web.study.dto.response.InstructorRespDto;
+
+public interface InstructorService {
+	public void registeInstructor(InstructorReqDto instructorReqDto);
+	public List<InstructorRespDto> getLectureAll();
+	public InstructorRespDto findInstructorById(int id);
+}
