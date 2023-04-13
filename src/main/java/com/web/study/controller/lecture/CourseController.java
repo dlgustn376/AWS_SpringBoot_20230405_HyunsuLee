@@ -44,11 +44,15 @@ public class CourseController {
 //		}
 		return ResponseEntity.ok().body(DataResponseDto.of(courseService.getCourseAll()));
 	}
+	
 	@ValidAspect
 	@ParamsAspect
 	@GetMapping("/search/courses")								// @Valid 와 BindingResult는 세트
 	public ResponseEntity<? extends ResponseDto> searchCourse(@Valid SearchCourseReqDto searchCourseReqDto, BindingResult bindingResult){  //@RequestParam 생략된것
-
+//		if(errorMap.isEmpty()) {
+//			throw new CustomException("유효성 검사 실패", errorMap);
+//		}
+		
 //		if(bindingResult.hasErrors()) {
 //			Map<String,String> errorMap = new HashMap<>();
 //			
