@@ -26,7 +26,7 @@ public class AuthController {
 	@PostMapping("/auth/register")
 	public ResponseEntity<? extends ResponseDto> registe(@RequestBody RegisteUserReqDto registeUserReqDto){
 		authService.duplicatedUsername(registeUserReqDto);
-		authService.registeUser(registeUserReqDto);
+		authService.registeUser(registeUserReqDto);		
 		return ResponseEntity.ok().body(ResponseDto.ofDefault());
 	}
 	

@@ -59,6 +59,7 @@ public class AuthServiceImpl implements AuthService{
 		
 		// UserDetailsService의 loadUSerByUsername() 호출이 된다.
 		// authentication이 만들어지면 정상 로그인
+		// getObject가 authenticationManager이고, 인증 토큰을 확인해라는 일을 맡김.
 		Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
 		
 		return jwtTokenProvider.createToken(authentication);
