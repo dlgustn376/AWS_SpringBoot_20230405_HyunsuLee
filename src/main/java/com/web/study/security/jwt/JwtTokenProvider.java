@@ -105,16 +105,18 @@ public class JwtTokenProvider {
 		Claims claims = parseClaims(accesToken);
 		Object roles = claims.get("auth");
 		
-		if(claims.get("auth") == null) {
+		if(roles == null) {
 			throw new CustomException("권한 정보가 없는 토큰입니다."); 
 		}
 		
 		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+		
 		String [] rolesArray = roles.toString().split(",");
+		
 		Arrays.asList(rolesArray).forEach(role ->{
 			authorities.add(new SimpleGrantedAuthority(role));
 		});
-		// User = Security에 있는 User
+		// User = Spring에 있는 User
 		UserDetails userDetails = new User(claims.getSubject(), "" , authorities);
 		return new UsernamePasswordAuthenticationToken(userDetails, "", authorities);
 	}

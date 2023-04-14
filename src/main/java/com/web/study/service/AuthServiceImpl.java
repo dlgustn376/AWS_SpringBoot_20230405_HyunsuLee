@@ -32,6 +32,7 @@ public class AuthServiceImpl implements AuthService{
 	@Override
 	public void registeUser(RegisteUserReqDto registeUserReqDto) {
 		User userEntity = registeUserReqDto.toEntity();
+		
 		userRepository.saveUser(userEntity);      // insert user_mst
 		
 		List<Authority> authorities = new ArrayList<>();

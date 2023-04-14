@@ -13,7 +13,8 @@ public class ApiControllerAdvice {
 	
 	@ExceptionHandler(CustomException.class)
 	public ResponseEntity<ErrorResponseDto> errors(CustomException e){
-		return ResponseEntity.badRequest().body(ErrorResponseDto.of(HttpStatus.BAD_REQUEST, e, e.getErrorMap()));
+		return ResponseEntity.badRequest().body(
+				ErrorResponseDto.of(HttpStatus.BAD_REQUEST, e, e.getErrorMap()));
 	}
 
 }
